@@ -12,7 +12,13 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
+// to test if the API is up and running
+server.get('/', (req, res) =>{
+    res.status(200).send(`<h1> Server is up and running </h1>`)
+})
+
 server.use('/api/auth', authRouter);
 server.use('/api/jokes', authenticate, jokesRouter);
+
 
 module.exports = server;
